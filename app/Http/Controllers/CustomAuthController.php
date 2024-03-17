@@ -10,12 +10,18 @@ use Illuminate\Support\Facades\Auth;
 
 class CustomAuthController extends Controller
 {
+    // jadi registrasi kita pake custom
+    // jadi login kita pake asli
+    // kenapa? berhasilnya gini e wkwkwk
 
+
+    // ini namanya 'login' di web.php
     public function index()
     {
         return view('auth.login');
     }
 
+    // ini ga dipake
     public function customLogin(Request $request)
     {
        $validator =  $request->validate([
@@ -30,16 +36,17 @@ class CustomAuthController extends Controller
                         ->withSuccess('Signed in');
         }
         $validator['emailPassword'] = 'Email address or password is incorrect.';
-        return redirect("login")->withErrors($validator);
+        return redirect("home")->withErrors($validator);
     }
 
 
-
+    // ini ga dipake
     public function registration()
     {
         return view('auth.registration');
     }
 
+    // ini dipake
     public function customRegistration(Request $request)
     {  
         $request->validate([
@@ -51,7 +58,7 @@ class CustomAuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
          
-        return redirect("dashboard")->withSuccess('You have signed-in');
+        return redirect("login")->withSuccess('You have signed-in');
     }
 
 
@@ -64,10 +71,11 @@ class CustomAuthController extends Controller
       ]);
     }
 
-    public function dashboard()
+    // ini penting dipake
+    public function home()
     {
         if(Auth::check()){
-            return view('dashboard');
+            return view('/home');
         }
   
         return redirect("login")->withSuccess('You are not allowed to access');

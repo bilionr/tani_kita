@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Livewire\ShopComponent;
+use App\Http\Livewire\HomeComponent;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +17,7 @@ use App\Http\Controllers\CustomAuthController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('dashboard', [CustomAuthController::class, 'dashboard']); 
+
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom'); 
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
@@ -29,7 +33,10 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/home', function () {
+        return view('/home');
+    })->name('/home');
 });
+
+Route::get('/home', HomeComponent::class);
+Route::get('/shop', ShopComponent::class);
