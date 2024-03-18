@@ -43,7 +43,7 @@
                         <a class="nav-link" href="#">Tentang</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Hubungi</a>
+                        <a class="nav-link" href="/contact">Hubungi</a>
                     </li>
                     <li class="nav-item">
                         <a href="cart.html">

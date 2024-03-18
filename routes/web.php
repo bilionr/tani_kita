@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\ContactComponent;
+
 
 
 
@@ -40,3 +42,4 @@ Route::middleware([
 
 Route::get('/home', HomeComponent::class);
 Route::get('/shop', ShopComponent::class);
+Route::get('/contact', ContactComponent::class);
